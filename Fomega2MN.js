@@ -1,5 +1,5 @@
 ;(()=>{
-      var entry_compare = (a,b)=>{//each entry = [value,separator] where separator is mountain
+   var entry_compare = (a,b)=>{//each entry = [value,separator] where separator is mountain
       if(a[0]<b[0]) return -1
       if(a[0]>b[0]) return 1
       return mountain_compare(a[1],b[1])
@@ -115,11 +115,10 @@
             &&mountain_compare(A[rightmost][topmost-1]?.[1]??[],J)>=0)
          ){
             if(vertical_compare(alpha,working_vertical)>0){
-               var i = find_index_below_row(V0[BRij[0]],working_vertical)
-               while(vertical_compare(alpha,V0[BRij[0]][i-1]??[])>0){
+               var i = working_vertical.length? find_index_below_row(V0[BRij[0]],working_vertical) : -1
+               while((++i)<BRij[1]){
                   A[rightmost].push([topright_value,A[BRij[0]][i][1]])
                   working_vertical = vertical_increase(working_vertical,A[BRij[0]][i][1])
-                  ++i
                }
             }
             while(vertical_compare(vertical_increase(alpha,J),vertical_increase(working_vertical,J))) J = J.concat([[]])
@@ -131,11 +130,10 @@
          alpha = V0[BRij[0]][BRij[1]-1]??[]
          working_vertical = V0[rightmost][topmost-1]??[]
          if(vertical_compare(alpha,working_vertical)>0){
-            i = find_index_below_row(V0[BRij[0]],working_vertical)
-            while(vertical_compare(alpha,V0[BRij[0]][i-1]??[])>0){
+            i = working_vertical.length? find_index_below_row(V0[BRij[0]],working_vertical) : -1
+            while((++i)<BRij[1]){
                A[rightmost].push([topright_value,A[BRij[0]][i][1]])
                working_vertical = vertical_increase(working_vertical,A[BRij[0]][i][1])
-               ++i
             }
          }
 
@@ -157,13 +155,9 @@
       topverticals.push(V0[rightmost][topmost])
       var width = rightmost - BRij[0]
       var magma_checkss = []
-      for(var i=BRij[0];i<=rightmost;++i){
+      for(var i=BRij[0]+1;i<=rightmost;++i){
          magma_checkss[i] = []
          for(var j=0;j<A0[i].length;++j){
-            if(i===BRij[0]){
-               magma_checkss[i][j] = -1
-               continue
-            }
             var working = [i,j]
             while(working[0]>BRij[0]){
                if(A0[working[0]].length<=working[1]) --working[1]
@@ -173,6 +167,11 @@
                working[0]===BRij[0] && working[1]<=BRij[1] && !vertical_compare(V0[working[0]][working[1]-1]??[],V0[i][j-1]??[])
             ) ? working[1] : -1
          }
+      }
+      i=BRij[0]
+      magma_checkss[i] = []
+      for(var j=0;j<A0[i].length;++j){
+         magma_checkss[i][j] = -1
       }
 
       var A = subtract1(A0,V0)
