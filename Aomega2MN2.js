@@ -140,7 +140,7 @@
 
       return A
    }
-   ,extend = (A0,small=false)=>{
+   ,extend = (A0,small=false,weak=false)=>{
       var rightmost = A0.length-1
       var topmost = A0[rightmost].length-1
       var V0 = A0.map(column_verticals)
@@ -211,6 +211,7 @@
                      target_column.push([
                         value+width,
                         !stretch_value[BRindex]||
+                        (weak&&vertical_compare(V0[x][y],topverticals[BRindex]??[])>=0)||
                         mountain_compare(entry[1],top_separators[BRindex])>=0||
                         mountain_compare(entry[1],stretch_threshold[BRindex])<0 ?
                         entry[1] :
@@ -223,6 +224,7 @@
                target_column.push([
                   value + (value>BRij[0] ? width :0),
                   !stretch_value[BRindex]||
+                  (weak&&vertical_compare(V0[x][y],topverticals[BRindex]??[])>=0)||
                   mountain_compare(entry[1],top_separators[BRindex])>=0||
                   mountain_compare(entry[1],stretch_threshold[BRindex])<0 ?
                   entry[1] :
@@ -237,6 +239,10 @@
    ,expand = (A0,FSterm,shorter=false)=>{
       for(var A=A0,n=1;n<=FSterm;++n) A = extend(A)
       return shorter ? A.slice(0,-1) : extend(A,true)
+   }
+   ,expandweak = (A0,FSterm,shorter=false)=>{
+      for(var A=A0,n=1;n<=FSterm;++n) A = extend(A,false,true)
+      return shorter ? A.slice(0,-1) : extend(A,true,true)
    }
    ,Limit = n=>[[],[[1,[[],[[1,[[]]]]].concat(Array(n).fill(0).map(()=>[]))]]]
    register.push({
@@ -254,6 +260,27 @@
          if(''+m==='Infinity') return Limit(FSterm)
          if(m.length===0) return []
          return expand(m,FSterm)
+      }
+      ,init:()=>([
+         {expr:[[Infinity]],low:[[]],subitems:[]}
+         ,{expr:[],low:[[]],subitems:[]}
+      ])
+   })
+   register.push({
+      id:'weak-a-omega2-mn-2'
+      ,name:'Weak Aω·2MN'
+      ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
+      ,able:mountain_is_limit
+      ,compare:mountain_compare
+      ,FS:(m,FSterm)=>{
+         if(''+m==='Infinity') return Limit(FSterm)
+         if(m.length===0) return []
+         return expandweak(m,FSterm,true)
+      }
+      ,FSalter:(m,FSterm)=>{
+         if(''+m==='Infinity') return Limit(FSterm)
+         if(m.length===0) return []
+         return expandweak(m,FSterm)
       }
       ,init:()=>([
          {expr:[[Infinity]],low:[[]],subitems:[]}
