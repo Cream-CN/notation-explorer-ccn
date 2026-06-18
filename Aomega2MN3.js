@@ -106,38 +106,30 @@
 
       A[rightmost].pop()
 
+      if(mountain_is_one(topright_separator)) return A
+
+      var alpha = V0[BRij[0]][BRij[1]-1]??[]
+      ,working_vertical = V0[rightmost][topmost-1]??[]
+      if(vertical_compare(alpha,working_vertical)>0){
+         var i = working_vertical.length? find_index_below_row(V0[BRij[0]],working_vertical) : -1
+         while((++i)<BRij[1]){
+            A[rightmost].push([topright_value,A[BRij[0]][i][1],A[BRij[0]][i][2]])
+            working_vertical = vertical_increase(working_vertical,A[BRij[0]][i][1])
+         }
+      }
+
       if(mountain_is_limit(topright_separator)){
          var BRseparator = S(A,BRij[0],BRij[1]-1)
          ,J = mountain_compare(BRseparator,topright_separator)>=0 ? [[]] : BRseparator.concat([[]])
-
-         var alpha = V0[BRij[0]][BRij[1]-1]??[]
-         ,working_vertical = V0[rightmost][topmost-1]??[]
-         if(vertical_compare(vertical_increase(alpha,J),working_vertical)>0){
-            if(vertical_compare(alpha,working_vertical)>0){
-               var i = working_vertical.length? find_index_below_row(V0[BRij[0]],working_vertical) : -1
-               while((++i)<BRij[1]){
-                  A[rightmost].push([topright_value,A[BRij[0]][i][1],A[BRij[0]][i][2]])
-                  working_vertical = vertical_increase(working_vertical,A[BRij[0]][i][1])
-               }
-            }
-            A[rightmost].push([topright_value,J,true])
-         }
-      }else if(!mountain_is_one(topright_separator)){
+         while(vertical_compare(vertical_increase(alpha,J),vertical_increase(working_vertical,J))) J = J.concat([[]])
+         A[rightmost].push([topright_value,J,true])
+      }else{
          topright_separator = topright_separator.slice(0,-1)
 
-         alpha = V0[BRij[0]][BRij[1]-1]??[]
-         working_vertical = V0[rightmost][topmost-1]??[]
-         if(vertical_compare(alpha,working_vertical)>0){
-            i = working_vertical.length? find_index_below_row(V0[BRij[0]],working_vertical) : -1
-            while((++i)<BRij[1]){
-               A[rightmost].push([topright_value,A[BRij[0]][i][1],A[BRij[0]][i][2]])
-               working_vertical = vertical_increase(working_vertical,A[BRij[0]][i][1])
-            }
+         if(vertical_compare(vertical_increase(alpha,topright_separator),working_vertical)>0){
+            A[rightmost].push([topright_value,topright_separator])
          }
-
-         if(!vertical_compare(alpha,working_vertical)) A[rightmost].push([topright_value,topright_separator])
       }
-
       return A
    }
    ,extend = (A0,small=false,weak=false)=>{
@@ -246,8 +238,8 @@
    }
    ,Limit = n=>[[],[[1,[[],[[1,[[]]]]].concat(Array(n).fill(0).map(()=>[]))]]]
    register.push({
-      id:'a-omega2-mn-2'
-      ,name:'Astral ω·2 mountain notation 2'
+      id:'a-omega2-mn-3'
+      ,name:'Aω·2MN3'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare
@@ -267,8 +259,8 @@
       ])
    })
    register.push({
-      id:'weak-a-omega2-mn-2'
-      ,name:'Weak Aω·2MN2'
+      id:'weak-a-omega2-mn-3'
+      ,name:'Weak Aω·2MN3'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare
