@@ -1,0 +1,90 @@
+基于其修改，所有由hypcos等原仓库贡献者提交的代码，版权均属于其所有，所有由我在本仓库新提交的独立新代码，使用Unlicense
+下面列举的代码，为原仓库/原仓库历史取得的源代码
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/8/29     14:19          18177 1-Y.js
+-a----         2026/8/29     14:19           8816 Aomega2MN.js
+-a----         2026/8/29     14:50          10829 Aomega2MN2.js
+-a----         2026/8/29     14:22          10389 Aomega2MN3.js
+-a----         2026/8/29     14:22           3314 aSAN-1.js
+-a----         2026/8/29     08:51           3361 aSAN-2.js
+-a----         2026/8/29     08:51           3550 aSAN-3.js
+-a----         2026/8/29     14:22           3505 aSAN~3+.js
+-a----         2026/8/29     14:26           4594 BDM.js
+-a----         2026/8/29     14:25           3983 BHhM.js
+-a----         2026/8/29     14:25           2808 BHM.js
+-a----         2026/8/29     14:25           4488 BHM2.js
+-a----         2026/8/29     14:26           4664 BIM.js
+-a----         2026/8/29     14:26           5135 BLM.js
+-a----         2026/8/29     14:27           2826 BM.js
+-a----         2026/8/29     14:30          22893 BomegaMN.js
+-a----         2026/8/29     14:30           4385 BPMS.js
+-a----         2026/8/29     14:30           3020 BSM.js
+-a----         2026/8/29     14:30           6371 BSM2.js
+-a----         2026/8/29     14:30           4687 BTM.js
+-a----         2026/8/29     14:31           3374 CM.js
+-a----         2026/8/29     08:51           9677 cOCF.js
+-a----         2026/8/29     14:31           6308 DEN.js
+-a----         2026/8/29     14:33           7282 DEN2.js
+-a----         2026/8/29     14:34           7613 DEN3.js
+-a----         2026/8/29     14:34           8822 Domega2MN.js
+-a----         2026/8/29     14:35           4189 EPM.js
+-a----         2026/8/29     14:41          15063 esplion-Y.js_Old
+-a----         2026/8/29     14:41           9974 Fomega2MN.js
+-a----         2026/8/29     14:38           5557 HSPN.js
+-a----         2026/8/29     14:38           5955 LMN.js
+-a----         2026/8/29     14:38           4870 LON.js
+-a----         2026/8/29     14:41           4129 MM.js
+-a----         2026/8/29     14:41           4673 MM2.js
+-a----         2026/8/29     14:51           5759 MM3.js
+-a----         2026/8/29     14:43           6770 MomegaMN.js
+-a----         2026/8/29     14:43           7793 MTomegaMN.js
+-a----         2026/8/29     14:43          17482 omega-Y-magma.js
+-a----         2026/8/29     14:44           9786 omega-Y.js
+-a----         2026/8/29     14:44           1380 PPS.js
+-a----         2026/8/29     14:44           7020 TomegaMN.js
+-a----         2026/8/29     14:44          12214 Tomega^omegaMN.js
+-a----         2026/8/29     14:45           4628 TON-DoR.js
+-a----         2026/8/29     14:45           4171 TON-DRC.js
+-a----         2026/8/29     14:45           4308 TON-DRP.js
+-a----         2026/8/29     14:45           4475 TON-DRPC.js
+-a----         2026/8/29     14:45           6294 TON-I.js
+-a----         2026/8/29     14:45           7318 TON-IBP.js
+-a----         2026/8/29     14:46           5562 TON-main.js
+-a----         2026/8/29     14:46           6323 TON-MC.js
+-a----         2026/8/29     14:47           6063 TON-MPC.js
+-a----         2026/8/29     14:47          14442 UPMS.js
+-a----         2026/8/29     14:47           2103 UPS.js
+-a----         2026/8/29     14:47           8533 wMM.js
+-a----         2026/8/29     14:48           7083 X-Y.js
+index.html
+pps.png
+framework.js
+==================================================================
+UNLICENSE 应用于除了上述文件以外的，由我提交的代码
+UNLICENSE TEXT:
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org/>
