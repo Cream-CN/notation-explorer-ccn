@@ -298,7 +298,7 @@
    ,Limit = i=>i?Limit(i-1).concat([LimitColumn(i,i)]):[[]]
    register.push({
       id:'td-omega-pow-omega-mn'
-      ,name:'Transfinite Dω^ωMN'
+      ,name:'TDω^ωMN'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare

@@ -18,7 +18,7 @@
 }
 register.push({
    id:'ton-mc'
-   ,name:"TON (reflection configuration) without passthrough"
+   ,name:"TON-Passthrough(reflection configuration)"
    ,display:TON_main_display
    ,compare:TON_compare
    ,able:TON_limit

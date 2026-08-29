@@ -260,7 +260,7 @@
    })
    register.push({
       id:'weak-a-omega2-mn-3'
-      ,name:'Weak Aω·2MN3'
+      ,name:'WAω·2MN3'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare

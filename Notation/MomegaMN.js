@@ -1,3 +1,5 @@
+//MωMN无穷降链
+//深痛哀悼永垂不朽
 ;(()=>{
    var entry_compare = (a,b)=>{//each entry = [value,separator] where separator is number
       if(a[0]<b[0]) return -1
@@ -182,7 +184,7 @@
    ,Limit = n=>n?[[],[[1,n]]]:[[]]
    register.push({
       id:'m-omega-mn'
-      ,name:'(pale haTEL\'I/non-terminating)Mutant ωMN'
+      ,name:'MωMN'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare

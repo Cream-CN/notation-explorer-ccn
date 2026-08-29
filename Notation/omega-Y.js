@@ -233,7 +233,7 @@
    }
    register.push({
       id:'omega-y'
-      ,name:'ω-Y sequence'
+      ,name:'ω-Y'
       ,display:sequence_display
       ,able:Y_limit
       ,compare:sequence_compare

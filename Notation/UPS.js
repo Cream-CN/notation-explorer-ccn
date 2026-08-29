@@ -37,7 +37,7 @@
    }
    register.push({
       id:'ups'
-      ,name:'(pale haTEL\'I/non-terminating)Upward projection sequence'
+      ,name:'UPS'
       ,display:s=>''+s==='Infinity'?'Limit':s.map(item=>item[1]?item[0]+'*':item[0]).join(',')
       ,able:matrix_limit
       ,compare:matrix_compare

@@ -1,6 +1,6 @@
 ;register.push({
    id:'bhm2'
-   ,name:'(pale haTEL\'I/non-terminating)BHM2'//Bashicu hyper matrix at 2024/2/8, different from the BHM I coded
+   ,name:'Bashicu Hyper Martix 2'//Bashicu hyper matrix at 2024/2/8, different from the BHM I coded
    ,display:matrix_display
    ,able:matrix_limit
    ,compare:matrix_compare

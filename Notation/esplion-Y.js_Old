@@ -1,8 +1,8 @@
 register.push({
     // 唯一标识符
-    id: 'esplion-Y',
+    id: 'e-Y',
     // 显示名称
-    name: 'esplion-Y',
+    name: 'ε-Y',
 
     // 将表达式转为 HTML 字符串
     display: function(expr) {
@@ -369,10 +369,10 @@ const EsplionYCore = (function() {
     function displayMt(m) {
         // 原始代码中的 displayMt 用于生成 HTML 表格，在此框架中不需要
         // 可以保留空实现或用于 console.log 调试
-    }
+    }}
 
     // --- 对外暴露的接口 ---
     return {
         expand: function(expr, n) {
             // 默认维度 d 为 [0]，与原始调用 expand(toSequence(result...), ..., [0], false) 一致
-            return expand(toSequence(expr), n, [0], false);
+            return expand(toSequence(expr), n, [0], false);}

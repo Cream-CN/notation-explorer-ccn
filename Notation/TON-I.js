@@ -1,7 +1,7 @@
 //Encoding: -1 for '0', 0 for 'W', [b,a,-2] for C(a,b), x[1] for left part, x[0] for right part
 register.push({
    id:'ton-i'
-   ,name:"Iteration of n-built from below (no passthrough)"
+   ,name:"TON-Iteration of n-built from below (no passthrough)"
    ,able:TON_limit
    ,compare:TON_noraise_compare
    ,display:TON_noraise_display

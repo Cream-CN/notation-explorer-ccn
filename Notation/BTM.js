@@ -1,6 +1,6 @@
 ;register.push({
    id:'btm'
-   ,name:'(pale haTEL\'I/non-terminating)Bashicu triangular matrix'//Bashicu triangular matrix at 2024/2/8
+   ,name:'Bashicu Triangular Matrix'//Bashicu triangular matrix at 2024/2/8
    ,display:matrix_display
    ,able:matrix_limit
    ,compare:matrix_compare

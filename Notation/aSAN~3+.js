@@ -1,6 +1,6 @@
 register.push({
    id:'asan-tilde3plus'
-   ,name:"aSAN~3+"
+   ,name:"aSAN-3+"
    ,display:aSAN_display
    ,able:aSAN_able
    ,compare:aSAN_compare

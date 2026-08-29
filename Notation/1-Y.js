@@ -1,6 +1,6 @@
 register.push({
   id:'y-seq'
-  ,name:'Y sequence'
+  ,name:'1-Y'
   ,display:sequence_display
   ,able:Y_limit
   ,compare:sequence_compare

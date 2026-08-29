@@ -108,7 +108,7 @@
    }
    register.push({
       id:'mm2'
-      ,name:'(pale haTEL\'I/non-terminating)MM2'
+      ,name:'MM2'
       ,display:x=>matrix_display(mountain_to_matrix(x))
       ,able:x=>matrix_limit(mountain_to_matrix(x))
       ,compare:(x1,x2)=>matrix_compare(mountain_to_matrix(x1),mountain_to_matrix(x2))

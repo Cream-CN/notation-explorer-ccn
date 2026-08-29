@@ -1,6 +1,6 @@
 register.push({
   id:'x-y'
-  ,name:'(pale haTEL\'I/non-terminating)X-Y sequence'
+  ,name:'X-Y(OLD)'
   ,display:sequence_display
   ,able:Y_limit
   ,compare:sequence_compare

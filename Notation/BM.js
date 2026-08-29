@@ -19,7 +19,7 @@
 ,matrix_limit = m=>m.length>0&&m[m.length-1][0]>0
 register.push({
    id:'bm4'
-   ,name:'Bashicu matrix'
+   ,name:'BMS'
    ,display:matrix_display
    ,able:matrix_limit
    ,compare:matrix_compare

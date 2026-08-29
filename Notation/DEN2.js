@@ -166,7 +166,7 @@
    ,Limit = n=>[[1,[1],[0]],[1,[2],[1],[0]]].concat(Array(n).fill(0).map((x,nn)=>Limit_row(1+nn)))
    register.push({
       id:'den2'
-      ,name:'DEN2'
+      ,name:'DEN2(iblp)'
       ,display
       ,able:isLimit
       ,semiable:isNonzero

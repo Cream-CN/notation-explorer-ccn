@@ -18,7 +18,7 @@
    :TON_noraise_display(term[0])+TON_noraise_display(term[1])+'C'
 register.push({
    id:'ton-dr'
-   ,name:'Degrees of Reflection'
+   ,name:'TON-Degrees of Reflection'
    ,able:TON_limit
    ,compare:TON_noraise_compare
    ,display:TON_noraise_display

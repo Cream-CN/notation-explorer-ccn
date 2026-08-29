@@ -328,7 +328,7 @@
    }
    register.push({
       id:'omega-y-weak'
-      ,name:'ω-Y (weak magma)'
+      ,name:'ω-Y weak magma'
       ,display:sequence_display
       ,able:Y_limit
       ,compare:sequence_compare

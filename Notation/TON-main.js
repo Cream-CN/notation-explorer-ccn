@@ -31,7 +31,7 @@
 ,TON_limit = term=>typeof term==='number'?term>=0:typeof term[1]!=='number'||term[1]>=0
 register.push({
    id:'ton-m'
-   ,name:"Taranosvky's ordinal notation"
+   ,name:"TON"
    ,display:TON_main_display
    ,compare:TON_compare
    ,able:TON_limit

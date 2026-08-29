@@ -86,7 +86,7 @@
    }
    register.push({
       id:'mm'
-      ,name:'(pale haTEL\'I/non-terminating)Mutant matrix'
+      ,name:'MM1'
       ,display:matrix_display
       ,able:matrix_limit
       ,compare:matrix_compare

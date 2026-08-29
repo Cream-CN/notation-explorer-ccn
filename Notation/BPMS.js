@@ -95,7 +95,7 @@
    ,Limit = n=>n?Limit(n-1).concat([LimitColumn(n).concat([[n-1,n-1]])]):[[]]
    register.push({
       id:'bpms'
-      ,name:'(pale haTEL\'I/non-terminating)Bidimensionally parented matrix'
+      ,name:'Bidimensionally Parented Matrix'
       ,display:expr=>''+expr==='Infinity'?'Limit':M3display(expr)
       ,able:M3is_limit
       ,compare:M3compare

@@ -134,7 +134,7 @@
    }
    register.push({
       id:'mm3'
-      ,name:'(pale haTEL\'I/non-terminating)Mutant matrix 3'
+      ,name:'MM3'
       ,display:matrix_display
       ,able:matrix_limit
       ,compare:matrix_compare

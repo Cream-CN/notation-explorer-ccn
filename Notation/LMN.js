@@ -27,7 +27,7 @@
 ,LMN_islimit = x=>''+x==='true,Infinity'||x&&(x[0]?x[1]||x[2]:LMN_islimit(x[2]))
 register.push({
    id:'lmn'
-   ,name:'lifting M-notation'
+   ,name:'lifting M-Notation'
    ,display:LMN_display
    ,able:LMN_islimit
    ,compare:LMN_compare

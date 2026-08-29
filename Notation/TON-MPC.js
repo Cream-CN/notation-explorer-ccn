@@ -2,7 +2,7 @@
 //In reflection configuration, -0.5 for 'x'
 register.push({
    id:'ton-mpc'
-   ,name:"TON with passthrough (reflection configuration)"
+   ,name:"TON-Passthrough(reflection configuration)"
    ,display:TON_main_display
    ,compare:TON_compare
    ,able:TON_limit

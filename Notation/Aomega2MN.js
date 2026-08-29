@@ -218,7 +218,7 @@
    ,Limit = n=>[[],[[1,[[],[[1,[[]]]]].concat(Array(n).fill(0).map(()=>[]))]]]
    register.push({
       id:'a-omega2-mn'
-      ,name:'Astral ω·2MN'
+      ,name:'Aω·2MN'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare

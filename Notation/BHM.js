@@ -1,6 +1,6 @@
 ;register.push({
    id:'bhm'
-   ,name:'Bashicu hyper matrix'
+   ,name:'Bashicu Hyper Matrix'
    ,display:matrix_display
    ,able:matrix_limit
    ,compare:matrix_compare

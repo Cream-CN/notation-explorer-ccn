@@ -32,7 +32,7 @@
    ,Limit = n=>n?Limit(n-1).concat(n):[0]
    register.push({
       id:'pps'
-      ,name:'(pale haTEL\'I/non-terminating)Parented predecessor sequence'
+      ,name:'PPS'
       ,display:sequence_display
       ,able:seq=>seq[seq.length-1]>0
       ,compare:sequence_compare

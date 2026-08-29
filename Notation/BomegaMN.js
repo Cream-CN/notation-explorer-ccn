@@ -531,7 +531,7 @@
 
    register.push({
       id:'b-omega-mn'
-      ,name:'Branching ω mountain notation'
+      ,name:'BωMN'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:top_compare

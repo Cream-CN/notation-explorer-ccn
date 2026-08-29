@@ -188,7 +188,7 @@
    ,Limit = n=>n>0?[[],[[1,Limit(n-1)]]]:[[]]
    register.push({
       id:'t-omega-mn'
-      ,name:'Transfinite ω mountain notation'
+      ,name:'TωMN'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare

@@ -138,7 +138,7 @@
    ,Limit = n=>[LimitR(n),[1,1,0],[1,2,1,0]].concat(Array(n).fill(0).map((x,nn)=>Limit_row(1+nn)))
    register.push({
       id:'den'
-      ,name:'Defective embedding notation'
+      ,name:'Defective Embedding Notation'
       ,display
       ,able:isLimit
       ,semiable:isNonzero

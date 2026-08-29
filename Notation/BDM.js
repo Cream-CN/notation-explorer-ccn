@@ -1,6 +1,6 @@
 ;register.push({
    id:'bdm'
-   ,name:'(pale haTEL\'I/non-terminating)Bashicu difference matrix'//バシク階差行列数 at 2024/2/8
+   ,name:'Bashicu Difference Matrix'//バシク(BASCHICU)阶差矩阵数
    ,display:matrix_display
    ,able:matrix_limit
    ,compare:matrix_compare

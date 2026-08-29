@@ -1,12 +1,13 @@
 ;register.push({
    id:'bim'
-   ,name:'(pale haTEL\'I/non-terminating)Bashicu induction matrix'//Bashicu induction matrix at 2024/2/8
+   ,name:'Bashicu Induction Matrix'//Bashicu induction matrix at 2024/2/8
    ,display:matrix_display
    ,able:matrix_limit
    ,compare:matrix_compare
    ,FS:(()=>{
       var data={}
       ,expand = (B,A)=>{
+         //这他妈是混淆的吗
          var D3=B.length-1,D2=B[0].length-1
          ,B2=Array(D3+1).fill(Array(D2+1).fill(0))
          ,C=Array(D2+1).fill(0)

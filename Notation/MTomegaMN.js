@@ -208,7 +208,7 @@
    ,Limit = n=>n>0?[[],[[1,Limit(n-1)]]]:[[]]
    register.push({
       id:'mt-omega-mn'
-      ,name:'(pale haTEL\'I/non-terminating)Mutant transfinite ωMN'
+      ,name:'MTωMN'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare

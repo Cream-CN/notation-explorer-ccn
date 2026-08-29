@@ -1,6 +1,6 @@
 ;register.push({
    id:'bsm'
-   ,name:'Bashicu sudden matrix'
+   ,name:'Bashicu Sudden Matrix'
    ,display:matrix_display
    ,able:matrix_limit
    ,compare:matrix_compare

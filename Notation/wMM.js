@@ -201,7 +201,7 @@
         
         register.push({
             id: 'wmm',
-            name: 'Weak mutant matrix',
+            name: 'WMN',
             display: typeof matrix_display !== 'undefined' ? matrix_display : function(m) {
                 
                 return JSON.stringify(m);

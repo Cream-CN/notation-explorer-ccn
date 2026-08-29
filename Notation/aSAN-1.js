@@ -19,7 +19,7 @@
 ,aSAN_semiable = a=>a!=1
 register.push({
    id:'asan-1'
-   ,name:"Aarex's superstrong array notation (aSAN-1)"
+   ,name:"aSAN-1"
    ,display:aSAN_display
    ,able:aSAN_able
    ,compare:aSAN_compare

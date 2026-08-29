@@ -247,7 +247,7 @@
    ,Limit = n=>[[],[[1,[[],[[1,[[]]]]].concat(Array(n).fill(0).map(()=>[]))]]]
    register.push({
       id:'a-omega2-mn-2'
-      ,name:'Astral ω·2 mountain notation 2'
+      ,name:'Aω·2MN2'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare
@@ -268,7 +268,7 @@
    })
    register.push({
       id:'weak-a-omega2-mn-2'
-      ,name:'Weak Aω·2MN2'
+      ,name:'WAω·2MN2'
       ,display:expr=>''+expr==='Infinity'?'Limit':mountain_display(expr)
       ,able:mountain_is_limit
       ,compare:mountain_compare

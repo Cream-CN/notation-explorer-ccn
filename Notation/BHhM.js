@@ -1,6 +1,6 @@
 ;register.push({
    id:'bhhm'
-   ,name:'(pale haTEL\'I/non-terminating)Bashicu hyper huge matrix'//超巨大行列数 at 2024/2/8
+   ,name:'Bashicu Hyper Huge Martix'//超巨大行列数 at 2024/2/8
    ,display:matrix_display
    ,able:matrix_limit
    ,compare:matrix_compare

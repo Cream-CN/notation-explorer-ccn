@@ -431,7 +431,7 @@
 
   register.push({
     id: 'upms',
-    name: 'Unupgrading projection matrix system',
+    name: 'UPMS',
     display: matrixDisplay,
     able: upmsLimit,
     compare: matrixCompare,

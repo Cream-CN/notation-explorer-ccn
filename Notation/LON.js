@@ -1,7 +1,7 @@
 //encoding: 0 = 0, A1+A2+...+Am = [false,A1,[false,A2,...[false,A(m-1),Am]...]], ψ_n(A) = [true,n,A]
 register.push({
    id:'lon'
-   ,name:'lifting Omega notation'
+   ,name:'lifting ω Notation'
    ,display:LMN_display
    ,able:LMN_islimit
    ,compare:LMN_compare

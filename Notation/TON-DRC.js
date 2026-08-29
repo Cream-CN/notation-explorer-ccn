@@ -2,7 +2,7 @@
 //In reflection configuration, -0.5 for 'x'
 register.push({
    id:'ton-drc'
-   ,name:'Degrees of Reflection (reflection configuration)'
+   ,name:'TON-Degrees of Reflection(reflection configuration)'
    ,able:TON_limit
    ,compare:TON_noraise_compare
    ,display:TON_noraise_display

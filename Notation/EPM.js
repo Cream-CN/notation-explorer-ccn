@@ -86,7 +86,7 @@
    ,Limit = n=>[[],[1],Array(n).fill(2)]
    register.push({
       id:'epm'
-      ,name:'(pale haTEL\'I/non-terminating)Enjambment parented matrix'
+      ,name:'Enjambment Parented Matrix'
       ,display:matrix_display
       ,able:matrix_limit
       ,compare:matrix_compare

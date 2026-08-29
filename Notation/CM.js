@@ -1,6 +1,6 @@
 ;register.push({
    id:'cm'
-   ,name:'Crane matrix system'
+   ,name:'Crane Matrix System'
    ,display:matrix_display
    ,able:matrix_limit
    ,compare:matrix_compare

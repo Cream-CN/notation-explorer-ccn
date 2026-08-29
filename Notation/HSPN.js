@@ -199,7 +199,7 @@ function HSPN_compare(x,y){
 
 register.push({
    id:'hspn'
-   ,name:"n-shifted psi"
+   ,name:"n-Shifted ψ"
    ,display:HSPN_display
    ,compare:HSPN_compare
    ,able:HSPN_islimit
