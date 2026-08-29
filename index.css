@@ -1,29 +1,39 @@
-.tooltip{
-   display: inline-block;
-   position: absolute;
-   z-index: 1073741824;
-   bottom: 100%;
-   padding: 2px 5px;
-   background-color: #dfd;
-   text-align: left;
+/*深色修改 CCN on 260829*/
+.tooltip {
+    display: inline-block;
+    position: absolute;
+    z-index: 1073741824;
+    bottom: 100%;
+    padding: 2px 5px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    text-align: left;
+    border: 1px solid #444;
 }
-.shown-item{
-   position: relative;
+
+.shown-item {
+    position: relative;
 }
-.shown-item:hover{
-   background-color: #cff;
+
+.shown-item:hover {
+    background-color: #1a3a3a;
 }
-.tab>button{
-   padding: 0 6px 2px;
-   border: 2px solid #90f;
-   border-radius: 10px;
-   background-color: #daf;
-   font-size: 20px;
+
+.tab>button {
+    padding: 0 6px 2px;
+    border: 2px solid #6a3f8a;
+    border-radius: 10px;
+    background-color: #3a2a4a;
+    color: #d0b0e0;
+    font-size: 20px;
 }
-.tab>button[disabled]{
-   background-color: #60a;
-   color: #fff;
+
+.tab>button[disabled] {
+    background-color: #1a1a2a;
+    color: #888;
+    border-color: #333;
 }
-.nowrap{
-   white-space: nowrap;
+
+.nowrap {
+    white-space: nowrap;
 }
