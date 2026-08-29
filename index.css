@@ -22,7 +22,7 @@
 .tab>button {
     padding: 0 6px 2px;
     border: 2px solid #6a3f8a;
-    border-radius: 10px;
+    border-radius: 0; /* 已移除圆角 */
     background-color: #3a2a4a;
     color: #d0b0e0;
     font-size: 20px;
