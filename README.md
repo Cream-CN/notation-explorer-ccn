@@ -1,132 +1,170 @@
-README FILE
-FORK FORM hypcos/notation-explorer
-CODE FORM hypcos/notation-explorer smilelee-lyx/notation-explorer projectcf/notation-explorer
-NE(CREAM-CN)
-用法同hypcos/notation-explorer
-规范
+#NE-CCN README FILE
+MY EMAIL: creamgoogologycn@outlook.com
+QQ GROUP: 778469244
 
-展开全程函数间操作规范
+CHANGELOG VERSION 1.2
+- ADD DBMS
+- ADD OTHER PPS VERSION
+- Optimization of legal issues and licensing structures have been carried out.
 
+CHANGELOG VERSION 1.1
+- Restored badges removed from upstream
+- Optimized badge display
+- Updated CSS
 
-本规范定义注册器（register）中每个表示法（notation）对象的接口契约，以及框架（framework.js）如何利用这些函数完成表达式树构建、基本序列展开和工具提示显示。遵循本规范可确保新表示法与UI及逻辑无缝协作。
+CHANGELOG VERSION TEST 1.0
+- CREATE THIS Repo. FORKED FROM hypcos/notation-explorer
+- ADD SOME UNDOED NOTATION
 
-注册器条目结构
+----------------------------------------------------------------------------------------------------------
+FORKED FROM: hypcos/notation-explorer
+CODE FROM: hypcos/notation-explorer, smilelee-lyx/notation-explorer, projectcf/notation-explorer
+NE (CREAM-CN)
 
-每个表示法通过 register.push({ ... }) 注册，对象包含以下字段：
-id（字符串，必填）：唯一标识符，也用作Vue组件名（id + '-list'）。
-name（字符串，必填）：在标签页上显示的名称。
-display（函数，必填）：将表达式转为HTML字符串（可含 <sup> 等标签）以便显示。
-able（函数，必填）：判断表达式是否为极限序数（即需要展开）。
-compare（函数，必填）：比较两个表达式的大小，返回 -1（小于）、0（等于）或 1（大于）。
-FS（函数，必填）：基本序列展开函数，返回第 n 项（n 为非负整数）。
-FSalter（函数，可选）：备用展开方式，签名同 FS，通常用于按住Shift键时。
-init（函数，必填）：返回初始数据集（列表），用于构建根节点。
-semiable（函数，可选）：判断表达式是否为半极限，仅在 expand_tier 中用于额外控制。
-各函数的详细约定
+Usage: Same as hypcos/notation-explorer
+
+Specification
+
+Full Specification for Operations Between Functions
+
+This specification defines the interface contract for each notation object in the registry, as well as how the framework (framework.js) uses these functions to build expression trees, perform fundamental sequence expansion, and display tooltips. Adhering to this specification ensures that new notations integrate seamlessly with the UI and logic.
+
+Registry Entry Structure
+
+Each notation is registered via register.push({ ... }). The object contains the following fields:
+id (string, required): Unique identifier, also used as the Vue component name (id + '-list').
+name (string, required): Display name shown on the tab.
+display (function, required): Converts an expression to an HTML string (may contain <sup> and other tags) for display.
+able (function, required): Determines whether an expression is a limit ordinal (i.e., needs expansion).
+compare (function, required): Compares two expressions, returning -1 (less than), 0 (equal), or 1 (greater than).
+FS (function, required): Fundamental sequence expansion function, returns the n-th term (n is a non-negative integer).
+FSalter (function, optional): Alternative expansion method, signature identical to FS, typically used when the Shift key is held.
+init (function, required): Returns the initial dataset (list) used to build the root node.
+semiable (function, optional): Determines whether an expression is a semi-limit, used only in expand_tier for additional control.
+
+Detailed Contract for Each Function
+
 2.1 display(expr) -> string
-用途：将表达式渲染为可读的HTML字符串。
-约定：
-对于特殊值 Infinity（伪极限），通常显示为 'Limit'。
-可包含HTML标签，但不应包含交互元素。
-输出应稳定唯一，用于缓存键时需保证同一表达式始终输出相同字符串。
+Purpose: Renders an expression as a readable HTML string.
+Contract:
+- For the special value Infinity (pseudo-limit), typically displays as 'Limit'.
+- May contain HTML tags but should not include interactive elements.
+- Output should be stable and unique; when used as a cache key, the same expression must always produce the same string.
+
 2.2 able(expr) -> boolean
-用途：判断 expr 是否为极限（其基本序列无限递增，且 FS(expr,0) 小于 expr）。
-约定：
-返回 true 时，框架才允许展开该节点。
-非极限（后继、0等）返回 false。
-Infinity 通常视为极限，返回 true。
+Purpose: Determines whether expr is a limit (its fundamental sequence is strictly increasing and FS(expr, 0) is less than expr).
+Contract:
+- Returns true only when the framework should allow expansion of that node.
+- Non-limits (successors, 0, etc.) return false.
+- Infinity is generally treated as a limit and returns true.
+
 2.3 compare(a, b) -> -1 | 0 | 1
-用途：全序比较两个表达式。
-约定：
-必须满足传递性和反对称性。
-返回值 -1 表示 a < b，0 表示相等，1 表示 a > b。
-Infinity 应被视作最大元素（比任何非无穷表达式都大）。
-用于 FSbounded 中寻找第一个大于 low[0] 的 FS 项。
+Purpose: Total order comparison of two expressions.
+Contract:
+- Must satisfy transitivity and antisymmetry.
+- Return -1 means a < b, 0 means equal, 1 means a > b.
+- Infinity should be treated as the maximum element (greater than any non-infinite expression).
+- Used in FSbounded to find the first FS term greater than low[0].
+
 2.4 FS(expr, n) -> expr
-用途：计算表达式 expr 的第 n 个基本序列元素（n 为非负整数）。
-约定：
-若 expr 不是极限（able 返回 false），行为未定义（不应被调用）。
-必须满足基本序列性质：FS(expr, n) 严格小于 expr，且随 n 增大单调递增。
-对于 Infinity，应返回其规范极限序列的第 n 项。
-返回值类型必须与 init 中定义的类型一致，且可被 compare 比较。
-框架通常按表达式字符串缓存结果，但实现者可自行管理内部缓存。
-2.5 FSalter(expr, n) -> expr（可选）
-用途：备用的基本序列展开，通常用于“完整展开”模式。
-约定：
-签名与 FS 完全相同。
-当用户按住 Shift 键点击展开时，框架优先调用 FSalter（若存在）。
-典型区别：FS 可能返回截断后的表达式（删除最后一个元素），FSalter 返回完整展开。
-若未提供，则 FS 会被用于所有场景。
+Purpose: Computes the n-th fundamental sequence element of expression expr (n is a non-negative integer).
+Contract:
+- If expr is not a limit (able returns false), behavior is undefined (should not be called).
+- Must satisfy fundamental sequence properties: FS(expr, n) is strictly less than expr, and monotonically increases as n increases.
+- For Infinity, should return the n-th term of its canonical limit sequence.
+- Return type must be consistent with the type defined in init, and comparable via compare.
+- The framework typically caches results by expression string, but implementers may manage internal caching themselves.
+
+2.5 FSalter(expr, n) -> expr (optional)
+Purpose: Alternative fundamental sequence expansion, typically used in "full expansion" mode.
+Contract:
+- Signature is exactly the same as FS.
+- When the user clicks expand while holding the Shift key, the framework will call FSalter if it exists.
+- Typical difference: FS may return a truncated expression (removing the last element), while FSalter returns the full expansion.
+- If not provided, FS will be used in all scenarios.
+
 2.6 init() -> [ item, item, ... ]
-用途：返回初始表达式列表，作为该表示法的根节点。
-约定：
-每个 item 是对象：{ expr, low, subitems }。
-expr：表达式值。
-low：数组（通常只使用 low[0]），用于 FSbounded 的下界，必须严格小于 expr。
-subitems：初始为空数组，由框架动态填充。
-列表按升序排列（依据 compare），通常包含 Infinity（极限）和 0（或最小元素）。
-2.7 semiable(expr) -> boolean（可选）
-用途：判断表达式是否为“半极限”。
-约定：
-若不提供，默认返回 false。
-在 expand_tier 中，若 semiable(expr) 为 true，则即使 able 为 false，也可能执行一次展开（条件是 compare(FS(expr,0), low[0]) > 0）。
-用于非极限但依然可做特殊展开的项。
-展开流程（函数间协作）
-框架的展开逻辑位于 framework.js 的 Vue 组件方法中。
-3.1 用户交互触发
-鼠标悬停：调用 recalculate，展示 FS 序列。
-鼠标点击（按下）：调用 expand，根据当前 tier 和 extra_FS 生成子节点。
-3.2 recalculate 流程
-检查 able(expr)，若非极限则无操作。
-确定使用的 FS 函数：若 event.shiftKey 且 FSalter 存在则用 FSalter，否则用 FS。
-对 n = 0 到 FS_shown（UI控制值），计算 FS(expr, n)，通过 display 转为HTML显示在工具提示中。
-3.3 expand 流程（核心）
-框架执行一次展开，在 subitems 中插入新节点。
-a) 扩展“额外”项（extra_FS）
-若 extra_FS > 0，反复调用 FSbounded（见下文），将结果插入到 item.subitems 前端，并更新 item.low[0] 为最新项。
-目的：在正式展开前，先推进到足够接近极限的项，减少层级数。
-b) 分层展开（tier）
-根据 tier 值（0~8等），递归执行 expand_tier：
-若当前项可展开（able 为 true，或 semiable 允许），则调用 FSbounded 获得第一个“有意义”的展开项（即 compare(FS(expr, n), low[0]) > 0）。
-生成新节点，插入当前项之后（或子项内，取决于层级）。
-tier 递减，递归处理新节点（若 tier > 0）。
-展开结果通过 display 显示在列表上。
-3.4 FSbounded 辅助函数（框架内部）
+Purpose: Returns the initial list of expressions as the root nodes for this notation.
+Contract:
+- Each item is an object: { expr, low, subitems }.
+- expr: the expression value.
+- low: an array (usually only low[0] is used) that serves as the lower bound for FSbounded; must be strictly less than expr.
+- subitems: initially empty, dynamically populated by the framework.
+- The list is sorted in ascending order (according to compare), and typically includes Infinity (limit) and 0 (or the minimum element).
+
+2.7 semiable(expr) -> boolean (optional)
+Purpose: Determines whether an expression is a "semi-limit".
+Contract:
+- If not provided, defaults to returning false.
+- In expand_tier, if semiable(expr) is true, even if able is false, one expansion may be performed (provided compare(FS(expr, 0), low[0]) > 0).
+- Used for terms that are not limits but still allow special expansion.
+
+Expansion Flow (Collaboration Between Functions)
+
+The framework's expansion logic is located in the Vue component methods in framework.js.
+
+3.1 User Interaction Triggers
+- Mouse hover: Triggers recalculate, displaying the FS sequence.
+- Mouse click (press): Triggers expand, generating child nodes based on the current tier and extra_FS.
+
+3.2 recalculate Flow
+1. Checks able(expr); if not a limit, no action.
+2. Determines which FS function to use: if event.shiftKey and FSalter exists, use FSalter; otherwise use FS.
+3. For n = 0 to FS_shown (UI-controlled value), compute FS(expr, n), convert to HTML via display, and show in the tooltip.
+
+3.3 expand Flow (Core)
+The framework performs one expansion, inserting new nodes into subitems.
+a) Expanding "extra" items (extra_FS)
+- If extra_FS > 0, repeatedly call FSbounded (see below), inserting results at the front of item.subitems, and update item.low[0] to the latest term.
+- Purpose: Before the main expansion, advance to a term sufficiently close to the limit, reducing the number of levels.
+b) Tiered Expansion (tier)
+- Based on the tier value (0~8, etc.), recursively execute expand_tier:
+  - If the current item is expandable (able is true, or semiable allows it), call FSbounded to obtain the first "meaningful" expansion term (i.e., compare(FS(expr, n), low[0]) > 0).
+  - Generate a new node and insert it after the current item (or within its children, depending on the tier).
+  - Decrement tier and recursively process the new node (if tier > 0).
+- Expansion results are displayed in the list via display.
+
+3.4 FSbounded Helper Function (Framework Internal)
 FSbounded = function(FS, compare, seq, low) {
-令 n = 0；
-循环：res = FS(seq, n)；
-若 compare(res, low[0]) > 0，则返回 res；
-否则 n+1，继续循环。
+    let n = 0;
+    loop:
+        res = FS(seq, n);
+        if (compare(res, low[0]) > 0) return res;
+        else n++, continue loop;
 }
-作用：找到第一个大于 low[0] 的 FS 项，确保新展开项是“有意义”的最小项。
-当 n 较小时可能返回等于或小于 low[0] 的值，函数自动递增 n 直至满足条件。
-缓存与性能注意事项
-框架不强制各函数缓存结果，但实现者可用内部数据结构（如 data 对象）存储已计算的 FS 序列，以提升反复访问性能。
-FS 和 FSalter 应尽量为纯函数（相同输入返回相同输出），以便框架基于 display 字符串的缓存机制生效。
-若表达式包含 Infinity，应保证 FS(Infinity, n) 返回与 init 中定义一致的极限序列。
-初始化与项结构示例
-init 返回的列表项结构示例：
+Purpose: Finds the first FS term greater than low[0], ensuring the new expansion term is the "meaningful" minimal term.
+When n is small, it may return a value equal to or less than low[0]; the function automatically increments n until the condition is satisfied.
+
+Caching and Performance Considerations
+- The framework does not enforce caching of results, but implementers may use internal data structures (e.g., a data object) to store already-computed FS sequences for improved repeated access performance.
+- FS and FSalter should be as pure as possible (same input yields same output) so that the framework's display-string-based caching mechanism works effectively.
+- If expressions include Infinity, ensure FS(Infinity, n) returns a limit sequence consistent with the one defined in init.
+
+Initialization and Item Structure Example
+Example of the item structure returned by init:
    [
       { 
         expr: [[Infinity]], low: [[]], subitems: [] },
       { expr: [], low: [[]], subitems: [] }
    ]
-expr：当前表达式（任意类型，但需被 display、compare、FS 等处理）。
-low：数组，通常只用 low[0]，必须是严格小于 expr 的表达式。
-subitems：框架动态填充的子项列表（递归结构）。
-重要约束：所有表达式类型的比较必须通过 compare 函数，且 compare 必须与 display 产生的字符串一致（用于缓存键）。
-错误处理与边界情况
-若 able(expr) 为 true，但 FS 返回的项不小于 expr（违反基本序列性质），可能导致 FSbounded 死循环。实现者必须保证性质成立。
-若 FSalter 未提供，框架将使用 FS 替代。
-半极限（semiable）使用场景较特殊，实现者应仔细查阅表示法定义，仅在必要时提供。
-开发新表示法检查清单
-脚本应当放置在Notation目录下
-确定数据类型：选择表达式内部表示（数组、数字、字符串等）。
-实现 compare：确保全序且符合数学定义。
-实现 display：输出清晰的HTML表示。
-实现 able：正确识别极限。
-实现 FS：计算基本序列；考虑是否需要 FSalter（若需要两种展开模式）。
-实现 init：定义根节点（含极限、零等）。
-可选实现 semiable：若表示法有半极限概念。
-测试：验证 FS(expr, n) 单调递增且小于 expr，FSbounded 可终止。
-注册：在 index.html 中引入新脚本文件。
+- expr: the current expression (any type, but must be handled by display, compare, FS, etc.).
+- low: an array, usually only low[0] is used; must be an expression strictly less than expr.
+- subitems: child items dynamically populated by the framework (recursive structure).
+Important constraint: all expression comparisons must go through the compare function, and compare must be consistent with the string produced by display (for cache keys).
+
+Error Handling and Edge Cases
+- If able(expr) is true but FS returns a term not less than expr (violating the fundamental sequence property), FSbounded may loop indefinitely. Implementers must guarantee the property holds.
+- If FSalter is not provided, the framework will use FS as a fallback.
+- The semiable use case is special; implementers should consult the notation's definition carefully and provide it only when necessary.
+
+Checklist for Developing a New Notation
+- The script should be placed in the Notation directory.
+- Determine the data type: choose the internal representation for expressions (array, number, string, etc.).
+- Implement compare: ensure a total order consistent with the mathematical definition.
+- Implement display: produce clear HTML representation.
+- Implement able: correctly identify limits.
+- Implement FS: compute the fundamental sequence; consider whether FSalter is needed (if two expansion modes are desired).
+- Implement init: define the root nodes (including limit, zero, etc.).
+- Optionally implement semiable: if the notation has a semi-limit concept.
+- Test: verify that FS(expr, n) is monotonically increasing and less than expr, and that FSbounded terminates.
+- Register: include the new script file in index.html.
