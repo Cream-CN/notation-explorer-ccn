@@ -1,39 +1,54 @@
-/*深色修改 CCN on 260829*/
-.tooltip {
-    display: inline-block;
-    position: absolute;
-    z-index: 1073741824;
-    bottom: 100%;
-    padding: 2px 5px;
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-    text-align: left;
-    border: 1px solid #444;
+body {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
 }
 
-.shown-item {
-    position: relative;
+.tab button {
+    background: #CCCCCC;
+    border: 2px solid #999999;
+    color: #000000;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 16px;
 }
 
-.shown-item:hover {
-    background-color: #1a3a3a;
+.tab button:active {
+    background: #AAAAAA;
 }
 
-.tab>button {
-    padding: 0 6px 2px;
-    border: 2px solid #6a3f8a;
-    border-radius: 0; /* 已移除圆角 */
-    background-color: #3a2a4a;
-    color: #d0b0e0;
-    font-size: 20px;
+.tab button:disabled {
+    background: #999999;
+    color: #666666;
 }
 
-.tab>button[disabled] {
-    background-color: #1a1a2a;
-    color: #888;
-    border-color: #333;
+button {
+    background: #CCCCCC;
+    border: 2px solid #999999;
+    color: #000000;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 16px;
 }
 
-.nowrap {
-    white-space: nowrap;
+button:active {
+    background: #AAAAAA;
+}
+
+button:disabled {
+    background: #999999;
+    color: #666666;
+}
+
+a {
+    color: #0000FF;
+    text-decoration: underline;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+a:visited {
+    color: #800080;
+}
+
+div {
+    color: #000000;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
 }
