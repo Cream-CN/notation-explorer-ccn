@@ -1,54 +1,32 @@
 body {
-    background-color: #FFFFFF;
-    color: #000000;
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
 }
-
-.tab button {
-    background: #CCCCCC;
-    border: 2px solid #999999;
-    color: #000000;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-    font-size: 16px;
+.tooltip{
+   display: inline-block;
+   position: absolute;
+   z-index: 1073741824;
+   bottom: 100%;
+   padding: 2px 5px;
+   background-color: #dfd;
+   text-align: left;
 }
-
-.tab button:active {
-    background: #AAAAAA;
+.shown-item{
+   position: relative;
 }
-
-.tab button:disabled {
-    background: #999999;
-    color: #666666;
+.shown-item:hover{
+   background-color: #cff;
 }
-
-button {
-    background: #CCCCCC;
-    border: 2px solid #999999;
-    color: #000000;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-    font-size: 16px;
+.tab>button{
+   padding: 0 6px 2px;
+   border: 2px solid #90f;
+   border-radius: 10px;
+   background-color: #daf;
+   font-size: 20px;
 }
-
-button:active {
-    background: #AAAAAA;
+.tab>button[disabled]{
+   background-color: #60a;
+   color: #fff;
 }
-
-button:disabled {
-    background: #999999;
-    color: #666666;
-}
-
-a {
-    color: #0000FF;
-    text-decoration: underline;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-}
-
-a:visited {
-    color: #800080;
-}
-
-div {
-    color: #000000;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+.nowrap{
+   white-space: nowrap;
 }

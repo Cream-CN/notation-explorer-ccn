@@ -280,5 +280,5 @@
         }
     });
 
-    console.log('[xss] XSS (CalcList) 表示法已注册。');
+    //console.log('[xss] XSS (CalcList) 表示法已注册。');
 })(window.register || (window.register = []));
