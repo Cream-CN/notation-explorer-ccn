@@ -167,7 +167,7 @@
 
     register.push({
         id: 'prss',
-        name: 'PrSS (原始序列系统)',
+        name: 'PrSS',
 
         // display: 将表达式转换为HTML显示
         display: function(expr) {

@@ -1,0 +1,401 @@
+TEST
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记号浏览器 · Cream-CN 优化版</title>
+    <!-- 样式优化：更现代、清晰、响应式，所有英文原文保留 -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f7fa;
+            color: #1e293b;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        #app {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            padding: 24px 28px;
+        }
+        .tab {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #e9edf2;
+            padding-bottom: 12px;
+        }
+        .tab button {
+            background: transparent;
+            border: none;
+            padding: 8px 18px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 40px;
+            color: #475569;
+            cursor: pointer;
+            transition: 0.15s;
+            letter-spacing: 0.3px;
+        }
+        .tab button:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+        .tab button:disabled {
+            background: #1e293b;
+            color: white;
+            pointer-events: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px 24px;
+            background: #f8fafc;
+            padding: 14px 20px;
+            border-radius: 60px;
+            margin: 16px 0 22px 0;
+        }
+        .controls > div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .controls button {
+            background: white;
+            border: 1px solid #d1d9e6;
+            border-radius: 40px;
+            width: 32px;
+            height: 32px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1e293b;
+            cursor: pointer;
+            transition: 0.1s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .controls button:hover {
+            background: #eef2f6;
+            border-color: #94a3b8;
+        }
+        .controls .value-badge {
+            display: inline-block;
+            background: white;
+            padding: 2px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: 1px solid #d1d9e6;
+            min-width: 40px;
+            text-align: center;
+        }
+        .reset-btn {
+            background: #eef2f6 !important;
+            border: none !important;
+            padding: 0 22px !important;
+            width: auto !important;
+            font-weight: 500;
+            color: #1e293b;
+            height: 36px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
+        .reset-btn:hover {
+            background: #dce2ea !important;
+        }
+        .notation-container {
+            min-height: 260px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 12px 6px 6px 6px;
+            border: 1px solid #eef2f6;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #e9edf2;
+            margin: 28px 0 18px 0;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            justify-content: center;
+            font-size: 0.95rem;
+            margin-top: 8px;
+        }
+        .footer-links a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .thanks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            background: #f8fafc;
+            padding: 16px 20px;
+            border-radius: 24px;
+            margin: 12px 0;
+        }
+        .changelog {
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 14px 20px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+        }
+        .changelog strong {
+            color: #0f172a;
+        }
+        #notation-list {
+            columns: 3 200px;
+            column-gap: 24px;
+            list-style: none;
+            padding: 8px 4px;
+        }
+        #notation-list li {
+            background: #f8fafc;
+            margin: 6px 0;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            break-inside: avoid;
+            border: 1px solid #eef2f6;
+        }
+        .memorial {
+            text-align: center;
+            padding: 12px 0;
+            background: #f1f5f9;
+            border-radius: 40px;
+            margin: 16px 0;
+        }
+        .memorial a {
+            color: #1e293b;
+            text-decoration: none;
+        }
+        .memorial img {
+            max-width: 160px;
+            height: auto;
+            border-radius: 12px;
+            margin: 6px 0;
+        }
+        @media (max-width: 640px) {
+            #app { padding: 16px; }
+            .controls { border-radius: 28px; padding: 12px 16px; }
+            .tab button { padding: 6px 14px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- 顶部标签栏 -->
+    <div class="tab">
+        <button v-for="(tab, idx) in tab_names" 
+                @mousedown="current_tab = idx" 
+                :disabled="current_tab == idx" 
+                :key="idx">
+            {{ tab }}
+        </button>
+    </div>
+
+    <!-- 控制条：紧凑且清晰，所有英文原文保留 -->
+    <div class="controls">
+        <button class="reset-btn" @mousedown="reset_list()">⟳ Reset the list</button>
+
+        <div>
+            <span>Expansion tier:</span>
+            <button @mousedown="decr_tier()">−</button>
+            <span class="value-badge">{{ tiername }}</span>
+            <button @mousedown="incr_tier()">+</button>
+            <span style="font-size:0.75rem; opacity:0.7; margin-left:4px;">(Press 0~9 to select tier)</span>
+        </div>
+
+        <div>
+            <span>Extra FS terms when expand:</span>
+            <button @mousedown="decr_extra()">−</button>
+            <span class="value-badge">{{ extra_FS[current_tab] }}</span>
+            <button @mousedown="incr_extra()">+</button>
+            <span style="font-size:0.75rem; opacity:0.7; margin-left:4px;">(Press "-" to decrease, and "+" to increase)</span>
+        </div>
+
+        <div>
+            <span>FS terms shown in tooltip:</span>
+            <button @mousedown="decrFS()">−</button>
+            <span class="value-badge">{{ FS_shown[current_tab] }}</span>
+            <button @mousedown="incrFS()">+</button>
+            <span style="font-size:0.75rem; opacity:0.7; margin-left:4px;">(Press "&lt;" to decrease, and "&gt;" to increase)</span>
+        </div>
+    </div>
+
+    <!-- 动态组件：当前记号 -->
+    <div class="notation-container">
+        <component :is="current_notation" :subitems="datasets[current_tab]"></component>
+    </div>
+
+    <!-- 底部信息：保留所有英文原文 -->
+    <hr>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 16px;">
+        <span><strong>Cream-CN's NE</strong> · My EMAIL <a href="mailto:creamgoogologycn@outlook.com">creamgoogologycn@outlook.com</a></span>
+        <span style="opacity:0.7;">WORK IN PROGRESS</span>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 6px 0 10px 0;">
+        <span>TODO list: 1.NEW X-Y &nbsp; 2.OTHER BMS VERSION</span>
+    </div>
+
+    <hr>
+    <div class="thanks-grid">
+        <div><strong>Hypcos</strong> (<a href="https://github.com/hypcos" target="_blank">GitHub</a>) — Forked from <a href="https://github.com/hypcos/notation-explorer" target="_blank">hypcos/notation-explorer</a> | <a href="https://hypcos.github.io/notation-explorer" target="_blank">Pages</a></div>
+        <div><strong>ProjectCF</strong> (<a href="https://github.com/ProjectCF" target="_blank">GitHub</a>) — Code from <a href="https://github.com/ProjectCF/htmzls-notation-explorer" target="_blank">projectcf/htmzls-notation-explorer</a> | <a href="https://projectcf.github.io/htmzls-notation-explorer/" target="_blank">Pages</a></div>
+        <div><strong>Smilelee-lyx(Li Yixiao)</strong> (<a href="https://github.com/smilelee-lyx" target="_blank">GitHub</a>) — Code Form <a href="https://github.com/smilelee-lyx/notation-explorer" target="_blank">smilelee-lyx/notation-explorer</a> | <a href="https://smilelee-lyx.github.io/notation-explorer" target="_blank">Pages</a></div>
+    </div>
+
+    <div class="changelog">
+        <div><strong>CHANGELOG VERSION 1.3</strong><br>ADD PrSS. ADD SOME NOTATION.</div>
+        <div><strong>CHANGELOG VERSION 1.2</strong><br>ADD DBMS<br>ADD OTHER PPS VERSION<br>Optimization of legal issues and licensing structures have been carried out.</div>
+        <div><strong>CHANGE LOG VERSION 1.1</strong><br>Restored badges removed from upstream<br>Optimized badge display<br>Updated CSS</div>
+        <div><strong>CHANGELOG VERSION TEST 1.0</strong><br>CREATE THIS Repo. FORKED FORM hypcos/notation-exploter<br>ADD SOME undoed NOTATION</div>
+    </div>
+
+    <hr>
+    <div class="footer-links">
+        <a href="https://www.bilibili.com/video/BV1GJ411x7h7" target="_blank">A proof of well-ordering for ω-Y.</a>
+        <a href="https://googology.top" target="_blank">googology.top</a>
+        <a href="https://wiki.googology.top" target="_blank">New Googology Wiki(Chinese).</a>
+        <a href="https://bbchallenge.org/40201102" target="_blank">BBChanllge</a>
+    </div>
+
+    <div class="memorial">
+        <a href="https://wiki.googology.top/index.php/PPS" target="_blank">
+            <img src="Assets/pps.png" alt="PPS" style="width:120px;">
+            <br>
+            PPS Infinite descending chain.<br>2025-12-10
+            <br>
+            <span style="opacity:0.8;">PPS introduction:https://wiki.googology.top/index.php/PPS</span>
+        </a>
+        <div style="margin-top: 6px; opacity:0.6;">Deeply Mourned,Eternal glory.<br>GoodBye PPS. R.I.P</div>
+        <div style="font-size:1.4rem;">&#128367; &#127876;</div>
+    </div>
+
+    <hr>
+    <div style="margin: 14px 0 6px 0;">
+        <h3 style="font-weight:600; font-size:1.1rem;">Loaded Notations</h3>
+        <ul id="notation-list">
+            <!-- 由 JavaScript 动态填充 -->
+        </ul>
+    </div>
+</div>
+
+<!-- ========== 脚本区 ========== -->
+<script src="Vue.js"></script>
+<script>var register = [];</script>
+
+<!-- 所有记号脚本（保留原样） -->
+<script src="Notation/1-Y.js"></script>
+<script src="Notation/Aomega2MN.js"></script>
+<script src="Notation/Aomega2MN2.js"></script>
+<script src="Notation/Aomega2MN3.js"></script>
+<script src="Notation/aSAN-1.js"></script>
+<script src="Notation/aSAN-2.js"></script>
+<script src="Notation/aSAN-3.js"></script>
+<script src="Notation/aSAN~3+.js"></script>
+<script src="Notation/BDM.js"></script>
+<script src="Notation/BHhM.js"></script>
+<script src="Notation/BHM.js"></script>
+<script src="Notation/BHM2.js"></script>
+<script src="Notation/BIM.js"></script>
+<script src="Notation/BLM.js"></script>
+<script src="Notation/bms.js"></script>
+<script src="Notation/BomegaMN.js"></script>
+<script src="Notation/BPMS.js"></script>
+<script src="Notation/BSM.js"></script>
+<script src="Notation/BSM2.js"></script>
+<script src="Notation/BTM.js"></script>
+<script src="Notation/CM.js"></script>
+<script src="Notation/cOCF.js"></script>
+<script src="Notation/DEN.js"></script>
+<script src="Notation/DEN2.js"></script>
+<script src="Notation/DEN3.js"></script>
+<script src="Notation/Domega2MN.js"></script>
+<script src="Notation/EPM.js"></script>
+<script src="Notation/Fomega2MN.js"></script>
+<script src="Notation/HSPN.js"></script>
+<script src="Notation/LMN.js"></script>
+<script src="Notation/LON.js"></script>
+<script src="Notation/MM.js"></script>
+<script src="Notation/MM2.js"></script>
+<script src="Notation/MM3.js"></script>
+<script src="Notation/MomegaMN.js"></script>
+<script src="Notation/MTomegaMN.js"></script>
+<script src="Notation/omega-Y-magma.js"></script>
+<script src="Notation/omega-Y.js"></script>
+<script src="Notation/PPS.js"></script>
+<script src="Notation/TomegaMN.js"></script>
+<script src="Notation/Tomega^omegaMN.js"></script>
+<script src="Notation/TON-DoR.js"></script>
+<script src="Notation/TON-DRC.js"></script>
+<script src="Notation/TON-DRP.js"></script>
+<script src="Notation/TON-DRPC.js"></script>
+<script src="Notation/TON-I.js"></script>
+<script src="Notation/TON-IBP.js"></script>
+<script src="Notation/TON-main.js"></script>
+<script src="Notation/TON-MC.js"></script>
+<script src="Notation/TON-MPC.js"></script>
+<script src="Notation/UPMS.js"></script>
+<script src="Notation/UPS.js"></script>
+<script src="Notation/wMM.js"></script>
+<script src="Notation/X-Y.js"></script>
+<script src="Notation/esplion-Y.js"></script>
+<script src="Notation/otherppses.js"></script>
+<script src="Notation/dsm.js"></script>
+<script src="Notation/dbms_ne.js"></script>
+<script src="Notation/Xss.js"></script>
+<script src="Notation/hprrs.js"></script>
+<script src="Notation/nrbms.js"></script>
+<script src="Notation/psshydra.js"></script>
+<script src="Notation/prss.js"></script>
+<script src="Notation/ntbms.js"></script>
+<script src="Notation/nltrss.js"></script>
+<script src="Notation/hsshydra2-1.js"></script>
+<script src="Notation/gpss2.js"></script>
+<script src="Notation/gprss.js"></script>
+
+<!-- 框架 & 主应用 -->
+<script src="framework.js"></script>
+
+<script>
+    (function() {
+        // 填充记号列表 (按名称排序)
+        var list = document.getElementById('notation-list');
+        if (list && typeof register !== 'undefined') {
+            var sorted = [...register].sort(function(a, b) {
+                return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
+            });
+            sorted.forEach(function(item) {
+                var li = document.createElement('li');
+                li.textContent = item.name + ' (id: ' + item.id + ')';
+                list.appendChild(li);
+            });
+        }
+    })();
+</script>
+
+</body>
+</html>
