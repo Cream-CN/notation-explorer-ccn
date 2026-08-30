@@ -39,43 +39,38 @@
 
 /* 1. 所有元素强制字体（保留圆角和紫色） */
 * {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+    font-family: 'Cambria Math', 'Cambria', cursive !important;
 }
 
 /* 2. IE6-IE8 兼容（不影响圆角和紫色） */
 body, div, p, span, a, input, button, textarea, select, 
 label, h1, h2, h3, h4, h5, h6, table, td, th, li, ul, ol,
 .tooltip, .shown-item, .tab>button, .nowrap {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+    font-family: 'Cambria Math', 'Cambria', cursive !important;
     /* IE6 特殊处理 */
-    _font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+    _font-family: 'Cambria Math', 'Cambria', cursive !important;
 }
 
 /* 3. IE8-IE11 特定 */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     * {
-        font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+        font-family: 'Cambria Math', 'Cambria', cursive !important;
     }
 }
 
 /* 4. 旧版 Firefox (XP/Win7) */
 @-moz-document url-prefix() {
     * {
-        font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+        font-family: 'Cambria Math', 'Cambria', cursive !important;
     }
 }
 
 /* 5. 表单元素强制（确保不受浏览器默认字体影响） */
 input, button, textarea, select, option {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+    font-family: 'Cambria Math', 'Cambria', cursive !important;
 }
 
 /* 6. HTML 和 Body 强制 */
 html, body {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+    font-family: 'Cambria Math', 'Cambria', cursive !important;
 }
-
-/* ============================================
-   可选：为紫色按钮单独保留圆角（已存在）
-   ============================================ */
-/* .tab>button 的圆角和紫色已在上面保留 */
