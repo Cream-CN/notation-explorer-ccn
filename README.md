@@ -2,20 +2,6 @@
 MY EMAIL: creamgoogologycn@outlook.com
 QQ GROUP: 778469244
 
-CHANGELOG VERSION 1.2
-- ADD DBMS
-- ADD OTHER PPS VERSION
-- Optimization of legal issues and licensing structures have been carried out.
-
-CHANGELOG VERSION 1.1
-- Restored badges removed from upstream
-- Optimized badge display
-- Updated CSS
-
-CHANGELOG VERSION TEST 1.0
-- CREATE THIS Repo. FORKED FROM hypcos/notation-explorer
-- ADD SOME UNDOED NOTATION
-
 ----------------------------------------------------------------------------------------------------------
 FORKED FROM: hypcos/notation-explorer
 CODE FROM: hypcos/notation-explorer, smilelee-lyx/notation-explorer, projectcf/notation-explorer
