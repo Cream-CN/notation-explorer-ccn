@@ -6,7 +6,44 @@
       n++
    }
 }
-,app = Vue.createApp({
+
+// ===== 增强的排序函数：处理特殊符号开头 =====
+function getSortKey(name) {
+    // 移除首尾空白
+    var str = name.trim();
+    // 如果字符串为空，返回原字符串
+    if (str.length === 0) return str;
+    
+    // 检查第一个字符是否为非字母数字符号
+    var firstChar = str.charAt(0);
+    var isSymbol = !/[a-zA-Z0-9]/.test(firstChar);
+    
+    // 如果是符号开头，递归查找后面的字符
+    if (isSymbol) {
+        // 从第二个字符开始查找第一个字母或数字
+        for (var i = 1; i < str.length; i++) {
+            var ch = str.charAt(i);
+            if (/[a-zA-Z0-9]/.test(ch)) {
+                // 找到字母/数字，从该位置开始作为排序键
+                return str.substring(i).toLowerCase();
+            }
+        }
+        // 如果全是符号，返回原字符串
+        return str.toLowerCase();
+    }
+    
+    // 正常字母开头，直接返回
+    return str.toLowerCase();
+}
+
+register.sort((a, b) => {
+    var keyA = getSortKey(a.name);
+    var keyB = getSortKey(b.name);
+    return keyA.localeCompare(keyB, undefined, { sensitivity: 'base' });
+});
+// =========================================
+
+app = Vue.createApp({
    data:()=>({
       current_tab:0
       ,FS_shown:register.map(()=>3)

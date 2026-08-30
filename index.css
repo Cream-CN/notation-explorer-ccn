@@ -23,7 +23,7 @@
    border: 2px solid #90f;
    border-radius: 10px;
    background-color: #daf;
-   font-size: 20px;
+   font-size: 24px;  /* 从 20px 改为 24px */
 }
 .tab>button[disabled]{
    background-color: #60a;
@@ -34,43 +34,74 @@
 }
 
 /* ============================================
-   新增：全局字体强制（兼容所有旧浏览器）
+   新增：全局字体强制（中文衬线字体 + 放大一号）
    ============================================ */
 
 /* 1. 所有元素强制字体（保留圆角和紫色） */
 * {
-    font-family: 'Cambria Math', 'Cambria', cursive !important;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', '思源宋体', '华文楷体', 'KaiTi', '楷体', '华文仿宋', 'FangSong', '宋体', 'SimSun', 'Times New Roman', serif !important;
+    font-size: 18px !important;  /* 新增：全局放大一号（原约16px） */
 }
 
 /* 2. IE6-IE8 兼容（不影响圆角和紫色） */
 body, div, p, span, a, input, button, textarea, select, 
 label, h1, h2, h3, h4, h5, h6, table, td, th, li, ul, ol,
 .tooltip, .shown-item, .tab>button, .nowrap {
-    font-family: 'Cambria Math', 'Cambria', cursive !important;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', '思源宋体', '华文楷体', 'KaiTi', '楷体', '华文仿宋', 'FangSong', '宋体', 'SimSun', 'Times New Roman', serif !important;
+    font-size: 18px !important;  /* 新增 */
     /* IE6 特殊处理 */
-    _font-family: 'Cambria Math', 'Cambria', cursive !important;
+    _font-family: 'Noto Serif SC', 'Source Han Serif SC', '思源宋体', '华文楷体', 'KaiTi', '楷体', '华文仿宋', 'FangSong', '宋体', 'SimSun', 'Times New Roman', serif !important;
+    _font-size: 18px !important;  /* 新增 */
 }
 
 /* 3. IE8-IE11 特定 */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     * {
-        font-family: 'Cambria Math', 'Cambria', cursive !important;
+        font-family: 'Noto Serif SC', 'Source Han Serif SC', '思源宋体', '华文楷体', 'KaiTi', '楷体', '华文仿宋', 'FangSong', '宋体', 'SimSun', 'Times New Roman', serif !important;
+        font-size: 18px !important;  /* 新增 */
     }
 }
 
 /* 4. 旧版 Firefox (XP/Win7) */
 @-moz-document url-prefix() {
     * {
-        font-family: 'Cambria Math', 'Cambria', cursive !important;
+        font-family: 'Noto Serif SC', 'Source Han Serif SC', '思源宋体', '华文楷体', 'KaiTi', '楷体', '华文仿宋', 'FangSong', '宋体', 'SimSun', 'Times New Roman', serif !important;
+        font-size: 18px !important;  /* 新增 */
     }
 }
 
 /* 5. 表单元素强制（确保不受浏览器默认字体影响） */
 input, button, textarea, select, option {
-    font-family: 'Cambria Math', 'Cambria', cursive !important;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', '思源宋体', '华文楷体', 'KaiTi', '楷体', '华文仿宋', 'FangSong', '宋体', 'SimSun', 'Times New Roman', serif !important;
+    font-size: 18px !important;  /* 新增 */
 }
 
 /* 6. HTML 和 Body 强制 */
 html, body {
-    font-family: 'Cambria Math', 'Cambria', cursive !important;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', '思源宋体', '华文楷体', 'KaiTi', '楷体', '华文仿宋', 'FangSong', '宋体', 'SimSun', 'Times New Roman', serif !important;
+    font-size: 18px !important;  /* 新增 */
+}
+
+/* 7. 代码块和特殊符号保持等宽或原样（可选的覆盖） */
+code, pre, .mono {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', '思源宋体', '华文楷体', 'KaiTi', '楷体', '华文仿宋', 'FangSong', '宋体', 'SimSun', 'Times New Roman', serif !important;
+    font-size: 18px !important;  /* 新增 */
+}
+
+/* 8. 标题字号适当增大（保持层次感） */
+h1 { font-size: 32px !important; }
+h2 { font-size: 28px !important; }
+h3 { font-size: 24px !important; }
+h4 { font-size: 20px !important; }
+h5 { font-size: 18px !important; }
+h6 { font-size: 16px !important; }
+
+/* 9. 小字号元素单独调整 */
+small, .small {
+    font-size: 15px !important;  /* 原本约13px */
+}
+
+/* 10. 超大字号保持比例 */
+big, .big {
+    font-size: 22px !important;  /* 原本约20px */
 }

@@ -174,7 +174,11 @@ Friendly Links<br>
     (function() {
         var list = document.getElementById('notation-list');
         if (list && typeof register !== 'undefined') {
-            register.forEach(function(item) {
+            // 按名称首字母排序后显示
+            var sorted = [...register].sort(function(a, b) {
+                return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
+            });
+            sorted.forEach(function(item) {
                 var li = document.createElement('li');
                 li.textContent = item.name + ' (id: ' + item.id + ')';
                 li.style.margin = '4px 0';
@@ -188,4 +192,3 @@ Friendly Links<br>
 
 </body>
 </html>
-
